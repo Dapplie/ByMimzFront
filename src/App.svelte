@@ -1,10 +1,13 @@
 
 <script>
 	import Navbar from './Layout/Navbar.svelte';
-	import Video from './Pages/Video.svelte';
+	import Home from './Pages/Home/Home.svelte';
+
 </script>
 
 <Navbar />
-<Video />
+<Home />
+
+
 
 <main></main>

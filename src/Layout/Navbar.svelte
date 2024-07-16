@@ -64,9 +64,7 @@
     <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toggleMenu()">&#9776;</a>
   </div>
   
-  <div style="padding-left:16px">
-      <p>Test navbar component</p>
-  </div>
+
   
   <script>
   function toggleMenu() {
