@@ -1,11 +1,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
+  
+  
+ <style>
   body {
     margin: 0;
     padding: 0;
     font-family: Arial;
+    height: auto;
   }
   
   .topnav {
@@ -28,7 +31,7 @@
   }
   
   .active {
-    background-color: #04AA6D;
+    background-color: #a80cad;
     color: white;
   }
   
@@ -57,7 +60,9 @@
   <body>
   
   <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
+    <a href="#home" class="active">
+      <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
+    </a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
     <a href="#about">About</a>
@@ -93,4 +98,8 @@
   </script>
   
   </body>
+
+  <script>
+    let imglogo = "./assets/bymimswht.png";
+  </script>
   
