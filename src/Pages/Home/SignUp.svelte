@@ -2,7 +2,7 @@
     <!-- Author: FormBold Team -->
     <!-- Learn More: https://formbold.com -->
     <div class="mx-auto w-full max-w-[550px]">
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <form action="" method="POST">
         <div class="mb-5">
           <label
             for="name"
