@@ -9,6 +9,7 @@
   import About from "./routes/About.svelte";
   import Contact from "./routes/Contact.svelte";
   import Cards from "./Pages/Home/cards/Cards.svelte";
+  import AccountView from "./Pages/Home/AccountView.svelte"
 </script>
 
 <!-- <Navbar2></Navbar2> -->

@@ -5,6 +5,10 @@
   import SignIn from "../Pages/Home/SignIn.svelte";
   import { fix_position } from "svelte/internal";
   let imglogo = "./assets/bymimswht.png";
+  import Footer from "../Pages/Home/Footer.svelte";
+  import AccountView from "../Pages/Home/AccountView.svelte";
+  import Cart from "../Pages/Home/Cart.svelte";
+  import Dashboard from "../Pages/Dashboard.svelte";
 </script>
 
 <main>
@@ -86,9 +90,9 @@
         <Link class="active" to="/">
           <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
         </Link>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <Link to="/Dashboard">Dashboard</Link>
+        <Link to="/Cart">View Cart</Link>
+        <Link to="/AccountView">View Account</Link>
         <Link to="/SignIn">Sign in</Link>
         <Link to="/SignUp">Sign up</Link>
         <a
@@ -135,6 +139,10 @@
       <Route path="/" component={Home} />
       <Route path="SignUp" component={SignUp} />
       <Route path="SignIn" component={SignIn} />
+      <Route path="AccountView" component={AccountView} />
+      <Route path="Cart" component={Cart} />
+      <Route path="Dashboard" component={Dashboard} />
     </Router>
   </body>
 </main>
+<Footer></Footer>
