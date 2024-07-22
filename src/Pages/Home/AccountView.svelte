@@ -1,57 +1,75 @@
+<script>
+  import { Router, Route, Link } from "svelte-routing";
+  import Cart from "./Cart.svelte";
+
+</script>
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      max-width: 300px;
-      margin: auto;
-      text-align: center;
-      font-family: arial;
-    }
-    
-    .title {
-      color: grey;
-      font-size: 18px;
-    }
-    
-    button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: #000;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      font-size: 18px;
-    }
-    
-    a {
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>
+   .card1 {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     max-width: 300px;
+     margin: auto;
+     text-align: center;
+     font-family: Arial, sans-serif;
+   }
+
+   .title1 {
+     color: grey;
+     font-size: 18px;
+   }
+
+   .button1 {
+     border: none;
+     outline: 0;
+     display: inline-block;
+     padding: 8px;
+     color: white;
+     background-color: #000;
+     text-align: center;
+     cursor: pointer;
+     width: 100%;
+     font-size: 18px;
+     text-decoration: none; /* Remove underline */
+     border-radius: 4px; /* Optional: Add some border radius */
+   }
+
+   .button1:hover {
+     opacity: 0.7;
+   }
+
+   .link1 {
       text-decoration: none;
       font-size: 22px;
-      color: black;
+      color: black; /* Default color */
     }
-    
-    button:hover, a:hover {
-      opacity: 0.7;
+
+    .link1:hover {
+      color: #C5C5C5; /* Color on hover */
+      text-decoration: none; /* Remove underline on hover */
+      transform: scale(1.1); /* Scale effect on hover */
     }
-    </style>
-    </head>
-    <body>
-    
-    <h2 style="text-align:center">User Profile Card</h2>
-    
-    <div class="card">
-      <img src="./assets/profile.webp" alt="John" style="width:100%">
-      <h1>John Doe</h1>
-      <p class="title">@email.com</p>
-      <p>User/Admin</p>
-      <p><a>Change Password</a></p>
-      <p><button>Cart</button></p>
-    </div>
-    
-    </body>
-    
-    
+
+
+ </style>
+</head>
+
+<body>
+ <Router>
+   <h2 style="text-align:center">User Profile Card</h2>
+
+   <div class="card1">
+     <img src="./assets/profile.webp" alt="John" style="width:100%">
+     <h1>John Doe</h1>
+     <p class="title1">@email.com</p>
+     <p>User/Admin</p>
+     <p><a href="https://google.com" class="link1 hoverable" style="color:#272727">Change Password</a></p>
+     <p>
+       <Link to="/Cart" class="button1" style="text-decoration:none; color: #C5C5C5">View Cart</Link>
+     </p>
+   </div>
+
+   <Route path="/Cart" component={Cart} />
+ </Router>
+</body>

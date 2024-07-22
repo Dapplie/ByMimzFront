@@ -9,6 +9,7 @@
   import AccountView from "../Pages/Home/AccountView.svelte";
   import Cart from "../Pages/Home/Cart.svelte";
   import Dashboard from "../Pages/Dashboard.svelte";
+  import Favorite from "../Pages/Home/Favorite.svelte";
 </script>
 
 <main>
@@ -91,6 +92,7 @@
           <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
         </Link>
         <Link to="/Dashboard">Dashboard</Link>
+        <Link to="/Favorite">View Favorites</Link>
         <Link to="/Cart">View Cart</Link>
         <Link to="/AccountView">View Account</Link>
         <Link to="/SignIn">Sign in</Link>
@@ -142,6 +144,7 @@
       <Route path="AccountView" component={AccountView} />
       <Route path="Cart" component={Cart} />
       <Route path="Dashboard" component={Dashboard} />
+      <Route path="Favorite" component={Favorite} />
     </Router>
   </body>
 </main>
