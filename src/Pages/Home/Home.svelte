@@ -21,7 +21,7 @@
         new Item('Item 45', 'This is the description for item 3.', 39, 'bag'),
         new Item('Item 32', 'This is the description for item 3.', 39, 'bag')
     ];
-    console.log(items);
+
 </script>
 
 <Bags></Bags>

@@ -3,8 +3,12 @@ export default {
     content: ["./src/**/*.{html,js,svelte,ts}"],
 
     theme: {
-        extend: {}
+        extend: {
+            colors: {
+                customGray: '#323B3F', // Replace with your desired color
+            },
+        },
     },
 
-    plugins: [require("@tailwindcss/typography")]
+    plugins: [require("@tailwindcss/typography")],
 };
