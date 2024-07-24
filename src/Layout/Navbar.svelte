@@ -10,6 +10,8 @@
   import Cart from "../Pages/Home/Cart.svelte";
   import Dashboard from "../Pages/Dashboard.svelte";
   import Favorite from "../Pages/Home/Favorite.svelte";
+  import Bags from "../Pages/Home/cards/Bags.svelte";
+  import Hats from "../Pages/Home/cards/Hats.svelte";
 </script>
 
 <main>
@@ -31,7 +33,7 @@
       .topnav {
         overflow: hidden;
         background-color: #333;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
       }
 
       .topnav a {
@@ -145,6 +147,8 @@
       <Route path="Cart" component={Cart} />
       <Route path="Dashboard" component={Dashboard} />
       <Route path="Favorite" component={Favorite} />
+      <Route path="Bags" component={Bags} />
+      <Route path="Hats" component={Hats} />
     </Router>
   </body>
 </main>
