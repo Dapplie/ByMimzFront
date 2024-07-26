@@ -14,6 +14,21 @@
   import Hats from "../Pages/Home/cards/Hats.svelte";
   import { onMount } from 'svelte';
   import axios from 'axios';
+  import { isAuthenticated, logout } from '../Pages/Home/auth';
+  import AddProduct from "../Pages/AddProduct.svelte";
+  
+
+
+  let loggedIn = false;
+
+$: isAuthenticated.subscribe(value => {
+  loggedIn = value;
+});
+
+const handleLogout = () => {
+  logout();
+  goto('/'); // Redirect after logout
+};
 </script>
 
 <main>
@@ -99,8 +114,12 @@
         <Link to="/Favorite">View Favorites</Link>
         <Link to="/Cart">View Cart</Link>
         <Link to="/AccountView">View Account</Link>
-        <Link to="/SignIn">Sign in</Link>
+        {#if loggedIn}
+        <Link to="">Logout</Link>
+        {:else}
+        <Link to="/SignIn">Login</Link>
         <Link to="/SignUp">Sign up</Link>
+        {/if}
         <a
           href="javascript:void(0);"
           style="font-size:15px;"
@@ -151,6 +170,7 @@
       <Route path="Favorite" component={Favorite} />
       <Route path="Bags" component={Bags} />
       <Route path="Hats" component={Hats} />
+      <Route path="AddProduct" component={AddProduct} />
     </Router>
   </body>
 </main>

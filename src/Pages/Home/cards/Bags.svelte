@@ -2,37 +2,41 @@
   import Card from "./Card.svelte";
   import Item from "./Item";
   import Card2 from "./Card2.svelte";
+  import { onMount } from 'svelte';
+  import axios from 'axios';
 
-  // const items = [
-  //     new Item('Summer Dress', 'This is the description for item 1.', 19, 'bag'),
-  //     new Item('Summer Dress', 'This is the description for item 2.', 29, 'bag'),
-  //     new Item('Item 3', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 4', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 5', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 6', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 7', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 45', 'This is the description for item 3.', 39, 'bag'),
-  //     new Item('Item 32', 'This is the description for item 3.', 39, 'bag')
-  // ];
+
 
   let searchQuery = "";
-  const itemssearch = [
-    new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),
-    new Item("Summer Dress", "This is the description for item 2.", 29, "bag"),
-    new Item("Item 3", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 4", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 5", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 6", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 7", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 45", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 32", "This is the description for item 3.", 39, "bag"),
-    // Add more items as needed
+  let items = [
+    // new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),
+    // new Item("Summer Dress", "This is the description for item 2.", 29, "bag"),
+    // new Item("Item 3", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 4", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 5", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 6", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 7", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 45", "This is the description for item 3.", 39, "bag"),
+    // new Item("Item 32", "This is the description for item 3.", 39, "bag"),
+    // // Add more items as needed
   ];
 
-  // Reactive filtered items
-  $: filteredItems = itemssearch.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  onMount(async () => {
+    try {
+      const response = await axios.get('http://localhost:3030/api/items');
+      items = response.data;
+      console.log('Fetched items:', items);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  });
+
+
+ // Reactive filtered items based on type and search query
+  $: filteredItems = items
+    .filter(item => item.type === 'bag') // Filter by type
+    .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    item.description.toLowerCase().includes(searchQuery.toLowerCase())); // Filter by search quer
 </script>
 
 <main>

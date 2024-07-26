@@ -11,18 +11,8 @@
   import Card2 from "./cards/Card2.svelte";
   import { onMount } from 'svelte';
   import axios from 'axios';
+  import AddProduct from "../AddProduct.svelte";
 
-  const items = [
-    new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),
-    new Item("Summer Dress", "This is the description for item 2.", 29, "bag"),
-    new Item("Item 3", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 4", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 5", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 6", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 7", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 45", "This is the description for item 3.", 39, "bag"),
-    new Item("Item 32", "This is the description for item 3.", 39, "bag"),
-  ];
 </script>
 
 <!-- <Bags></Bags> -->
@@ -32,11 +22,7 @@
 <SignIn></SignIn> -->
 <!-- <Cards /> -->
 
-<!-- <div class="flex flex-row flex-wrap gap-5 justify-center items-center">
-        {#each items as item}
-            <Card2 {item} />
-        {/each}
-    </div> -->
+
 
 <Router>
   <Route path="SignUp" component={SignUp} />

@@ -1,26 +1,108 @@
 <script>
     import Item from "./Home/cards/Item";
+    import { onMount } from 'svelte';
+    import axios from 'axios';
+    import { Router, Link, Route } from "svelte-routing";
+    import AddProduct from "./AddProduct.svelte";
 
-    const items = [
-        new Item('Summer Dress', 'This is the description for item 1.', 19, 'bag'),
-        new Item('Summer Dress', 'This is the description for item 2.', 29, 'bag'),
-        new Item('Item 3', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 4', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 5', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 6', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 7', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 45', 'This is the description for item 3.', 39, 'bag'),
-        new Item('Item 32', 'This is the description for item 3.', 39, 'bag')
-    ];
+    let searchQuery = "";
+    let items = [];
+    let filteredItems = [];
+
+    const fetchItems = async () => {
+        try {
+            const response = await fetch('http://localhost:3030/api/items');
+            if (!response.ok) throw new Error('Network response was not ok.');
+            items = await response.json();
+            filteredItems = items; // Initialize filtered items
+        } catch (error) {
+            console.error('Error fetching items:', error);
+        }
+    };
+
+    const deleteItem = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:3030/api/items/${id}`);
+            if (response.status === 200) {
+                items = items.filter(item => item._id !== id);
+                filteredItems = filteredItems.filter(item => item._id !== id); // Update filtered items
+                console.log('Item deleted successfully');
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };
+
+    const filterItems = () => {
+        filteredItems = items.filter(item =>
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    };
+
+    onMount(() => {
+        fetchItems();
+    });
 </script>
 
-<div class="container">
-    <h1 class="mb-8">
-        All items online:
+
+
+<style>
+    .search-bar {
+        margin-bottom: 1rem;
+    }
+
+    .search-bar input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+    }
+    .table-container {
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 0.75rem;
+        text-align: left;
+    }
+
+
+    @media (max-width: 768px) {
+        table {
+            min-width: 600px; /* Ensure table has a minimum width for better scrolling */
+        }
+    }
+</style>
+
+
+
+<router>
+<Route path="AddProduct" component={AddProduct} />
+<div class="container mb-16">
+    <h1 class="mb-2">
+        Manage all items online or <Link to="/AddProduct">Add new item</Link>
     </h1>
 
+    <!-- Search bar -->
+    <div class="search-bar">
+        <input 
+            type="text" 
+            placeholder="Search items.." 
+            bind:value={searchQuery} 
+            on:input={filterItems}
+        />
+    </div>
+
+    <div class="table-container">
     <table class="text-left w-full">
-        <thead class="bg-gray-800 flex text-white w-full">
+        <thead class="bg-gray-700 flex text-white w-full">
             <tr class="flex w-full mb-2">
                 <th class="p-4 w-1/4">Name</th>
                 <th class="p-4 w-1/4">Description</th>
@@ -29,19 +111,21 @@
                 <th class="p-4 w-1/4">Action</th>
             </tr>
         </thead>
-        <!-- Remove the inline CSS fixed height on production and replace it with a CSS class -->
-        <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
-            {#each items as item}
+        <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 100vh;">
+            {#each filteredItems as item}
             <tr class="flex w-full mb-2">
                 <td class="p-4 w-1/4">{item.name}</td>
                 <td class="p-4 w-1/4">{item.description}</td>
                 <td class="p-4 w-1/4">${item.price}</td>
                 <td class="p-4 w-1/4">{item.type}</td>
                 <td class="p-4 w-1/4">
-                    <button class="bg-gray-800 text-white rounded-xl px-4 py-2">Remove item</button>
+                    <button class="bg-red-800 text-white rounded-xl px-4 py-2"
+                    on:click={() => deleteItem(item._id)}>Remove item</button>
                 </td>
             </tr>
             {/each}
         </tbody>
     </table>
+    </div>
 </div>
+</router>
