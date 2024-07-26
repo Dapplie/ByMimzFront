@@ -12,6 +12,8 @@
   import Favorite from "../Pages/Home/Favorite.svelte";
   import Bags from "../Pages/Home/cards/Bags.svelte";
   import Hats from "../Pages/Home/cards/Hats.svelte";
+  import { onMount } from 'svelte';
+  import axios from 'axios';
 </script>
 
 <main>

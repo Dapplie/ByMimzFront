@@ -1,8 +1,15 @@
+<script>
+  import { Router, Link, Route } from "svelte-routing";
+  import SignUp from "./SignUp.svelte";
+</script>
 <style>
     .login_img_section {
     background: linear-gradient(rgba(2,2,2,.7),rgba(0,0,0,.7)),url(https://images.unsplash.com/photo-1650825556125-060e52d40bd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center;
   }
   </style>
+
+<Router>
+  <Route path="SignUp" component={SignUp} />
   <div class="h-screen flex">
 
             <div class="flex  lg:w-1/2 justify-center items-center bg-white space-y-8 mx-auto">
@@ -27,7 +34,7 @@
                 <div class="flex justify-between mt-4">
                   <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Forgot Password ?</span>
   
-                  <a href="#" class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't have an account yet?</a>
+                  <Link to="/SignUp" class="clickable-div text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Don't have an account yet?</Link>
                 </div>
                 
               </form>
@@ -35,3 +42,4 @@
               
             </div>
         </div>
+</Router>

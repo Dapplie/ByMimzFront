@@ -9,6 +9,8 @@
   import Bags from "./cards/Bags.svelte";
   import Item from "./cards/Item.js";
   import Card2 from "./cards/Card2.svelte";
+  import { onMount } from 'svelte';
+  import axios from 'axios';
 
   const items = [
     new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),
@@ -24,6 +26,7 @@
 </script>
 
 <!-- <Bags></Bags> -->
+ <!-- <Hats></Hats> -->
 <Video />
 <!-- <SignUp />
 <SignIn></SignIn> -->
