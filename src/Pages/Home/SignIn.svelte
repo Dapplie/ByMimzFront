@@ -21,9 +21,14 @@
         });
         console.log('Sign-in successful:', response.data);
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
+        localStorage.setItem('userId', response.data.userId);
+        // localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
         checkAuth();
-        // window.location.href = '/'; // Redirect after successful sign-in
+        function delayedFunction() {
+        window.location.href = '/'; // Redirect after successful sign-in
+  }
+        setTimeout(delayedFunction, 2000); // 2000 milliseconds = 2 seconds
+        
     } catch (error) {
         console.error('Error during sign-in:', error);
     }

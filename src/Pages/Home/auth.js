@@ -3,8 +3,8 @@ import { writable } from 'svelte/store';
 export const isAuthenticated = writable(false);
 export const user = writable(null);
 
-export function checkAuth() {
-    const token = localStorage.getItem('token');
+function checkAuth() {
+    const token = localStorage.getItem('userId');
     if (token) {
         isAuthenticated.set(true);
         const userInfo = JSON.parse(localStorage.getItem('user'));
@@ -17,10 +17,11 @@ export function checkAuth() {
     }
 }
 
-
 export function logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     localStorage.removeItem('user');
     isAuthenticated.set(false);
     user.set(null);
 }
+
+checkAuth(); // Initialize auth status on module load
