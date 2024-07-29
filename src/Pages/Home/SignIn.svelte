@@ -24,7 +24,8 @@
         localStorage.setItem('userId', response.data.userId);
         //localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
         checkAuth();
-        //window.location.href = '/'; // Redirect after successful sign-in
+        await checkAuth();
+        window.location.href = '/'; // Redirect after successful sign-in
         
     } catch (error) {
         console.error('Error during sign-in:', error);
