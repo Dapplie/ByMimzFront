@@ -7,14 +7,16 @@ export function checkAuth() {
     const token = localStorage.getItem('token');
     if (token) {
         isAuthenticated.set(true);
-        // Optionally, set user info if you store it in localStorage
         const userInfo = JSON.parse(localStorage.getItem('user'));
         user.set(userInfo);
+        console.log('User authenticated:', userInfo);
     } else {
         isAuthenticated.set(false);
         user.set(null);
+        console.log('User not authenticated');
     }
 }
+
 
 export function logout() {
     localStorage.removeItem('token');

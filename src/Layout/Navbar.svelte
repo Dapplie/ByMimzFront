@@ -115,7 +115,7 @@ const handleLogout = () => {
         <Link to="/Cart">View Cart</Link>
         <Link to="/AccountView">View Account</Link>
         {#if loggedIn}
-        <Link to="">Logout</Link>
+        <Link to="/" on:click={handleLogout}>Logout</Link>
         {:else}
         <Link to="/SignIn">Login</Link>
         <Link to="/SignUp">Sign up</Link>

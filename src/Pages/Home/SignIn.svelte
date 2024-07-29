@@ -14,19 +14,20 @@
 
     const signIn = async () => {
     try {
-      const response = await axios.post('http://localhost:3030/api/signin', {
-        email,
-        password
-      });
-      console.log('Sign-in successful:', response.data);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
-      checkAuth();
-      window.location.href = '/'; // Redirect after successful sign-in
+        const response = await axios.post('http://localhost:3030/api/signin', {
+            email,
+            password
+        });
+        console.log('Sign-in successful:', response.data);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
+        checkAuth();
+        // window.location.href = '/'; // Redirect after successful sign-in
     } catch (error) {
-      console.error('Error during sign-in:', error);
+        console.error('Error during sign-in:', error);
     }
-  };
+};
+
 </script>
 <style>
     .login_img_section {
@@ -35,6 +36,7 @@
   </style>
 
 <Router>
+  
   <Route path="SignUp" component={SignUp} />
   <div class="h-screen flex">
 
