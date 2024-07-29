@@ -2,14 +2,16 @@
     import { onMount } from 'svelte';
     import { goto } from '@sveltejs/kit/navigation';
     import axios from 'axios';
-
+    
     let fullName = '';
     let email = '';
     let location = '';
     let phoneNumber = '';
     let password = '';
 
-    const signUp = async () => {
+
+
+const signUp = async () => {
     try {
         const response = await axios.post('http://localhost:3030/api/signup', {
             fullName,
@@ -20,7 +22,7 @@
         });
 
         console.log('Sign-up successful:', response.data);
-        
+
         // Assuming response.data contains the userId
         const { userId } = response.data;
 
@@ -28,7 +30,7 @@
         localStorage.setItem('userId', userId);
 
         // Redirect after successful sign-up
-        goto('/');
+        window.location.href = '/';
     } catch (error) {
         console.error('Error during sign-up:', error);
     }
