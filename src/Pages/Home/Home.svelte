@@ -12,11 +12,13 @@
   import { onMount } from 'svelte';
   import axios from 'axios';
   import AddProduct from "../AddProduct.svelte";
+  import ViewItem from "./cards/ViewItem.svelte";
 
 </script>
 
 <!-- <Bags></Bags> -->
  <!-- <Hats></Hats> -->
+<!-- <ViewItem /> -->
 <Video />
 <!-- <SignUp />
 <SignIn></SignIn> -->

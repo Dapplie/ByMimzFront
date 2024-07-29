@@ -4,26 +4,21 @@
   import Card2 from "./Card2.svelte";
   import { onMount } from 'svelte';
   import axios from 'axios';
+  import { Router, Link, Route } from "svelte-routing";
+  import ViewItem from "./ViewItem.svelte";
+  import { navigate } from "svelte-routing";
 
 
   let searchQuery = "";
   let items = [
     // new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),
     // new Item("Summer Dress", "This is the description for item 2.", 29, "bag"),
-    // new Item("Item 3", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 4", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 5", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 6", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 7", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 45", "This is the description for item 3.", 39, "bag"),
-    // new Item("Item 32", "This is the description for item 3.", 39, "bag"),
-    // // Add more items as needed
   ];
 
   onMount(async () => {
     try {
       const response = await axios.get('http://localhost:3030/api/items');
-      items = response.data;
+      items = response.data.map((item, index) => ({ ...item, id: item._id || index }));
       console.log('Fetched items:', items);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -38,6 +33,8 @@
                     item.description.toLowerCase().includes(searchQuery.toLowerCase())); // Filter by search quer
 </script>
 
+<router>
+  <Route path="/view-item/:id" component={ViewItem} />
 <main>
   <div>
     <!-- Searchbar -->
@@ -54,11 +51,14 @@
 
     <div class="flex flex-row flex-wrap gap-5 justify-center items-center">
       {#each filteredItems as item}
+      <Link to={`/view-item/${item.id}`} style="cursor: pointer;">
         <Card2 {item} />
+      </Link>
       {/each}
     </div>
   </div>
 </main>
+</router>
 
 <style>
   input { padding-inline: .5rem; }

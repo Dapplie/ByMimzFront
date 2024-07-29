@@ -16,6 +16,7 @@
   import axios from 'axios';
   import { isAuthenticated, logout } from '../Pages/Home/auth';
   import AddProduct from "../Pages/AddProduct.svelte";
+  import ViewItem from "../Pages/Home/cards/ViewItem.svelte";
   
 
 
@@ -171,6 +172,7 @@ const handleLogout = () => {
       <Route path="Bags" component={Bags} />
       <Route path="Hats" component={Hats} />
       <Route path="AddProduct" component={AddProduct} />
+      <Route path="/view-item/:id" component={ViewItem} />
     </Router>
   </body>
 </main>
