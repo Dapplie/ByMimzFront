@@ -6,7 +6,6 @@
   import axios from 'axios';
 
 
-
   let searchQuery = "";
   let items = [
     // new Item("Summer Dress", "This is the description for item 1.", 19, "bag"),

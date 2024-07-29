@@ -10,20 +10,30 @@
     let password = '';
 
     const signUp = async () => {
-        try {
-            const response = await axios.post('http://localhost:3030/api/signup', {
-                fullName,
-                email,
-                location,
-                phoneNumber,
-                password
-            });
-            console.log('Sign-up successful:', response.data);
-            goto('/'); // Redirect after successful sign-up
-        } catch (error) {
-            console.error('Error during sign-up:', error);
-        }
-    };
+    try {
+        const response = await axios.post('http://localhost:3030/api/signup', {
+            fullName,
+            email,
+            location,
+            phoneNumber,
+            password
+        });
+
+        console.log('Sign-up successful:', response.data);
+        
+        // Assuming response.data contains the userId
+        const { userId } = response.data;
+
+        // Save userId to local storage
+        localStorage.setItem('userId', userId);
+
+        // Redirect after successful sign-up
+        goto('/');
+    } catch (error) {
+        console.error('Error during sign-up:', error);
+    }
+};
+
 </script>
 
 

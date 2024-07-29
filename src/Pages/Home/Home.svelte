@@ -26,6 +26,7 @@
 
 <Router>
   <Route path="SignUp" component={SignUp} />
+  <Route path="SignIn" component={SignIn} />
   <Route path="Bags" component={Bags} />
   <Route path="Hats" component={Hats} />
   <Route path="Cards" component={Cards} />
