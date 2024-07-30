@@ -1,8 +1,27 @@
 <script>
   import { Router, Route, Link } from "svelte-routing";
   import Cart from "./Cart.svelte";
+  import { onMount } from 'svelte';
+  import axios from 'axios';
+
+  let user = null;
+  let token = localStorage.getItem('token'); // Retrieve token from local storage
+
+  onMount(async () => {
+    try {
+      const response = await axios.get('http://localhost:3030/api/user', {
+        headers: { Authorization: `Bearer ${token}` } // Pass token in headers
+      });
+      user = response.data;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  });
 
 </script>
+
+{#if user}
+
 
 <head>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,14 +76,15 @@
 
 <body>
  <Router>
-   <h2 style="text-align:center">User Profile Card</h2>
+   <h2 style="text-align:center">User Profile</h2>
 
    <div class="card1">
      <img src="./assets/profile.webp" alt="John" style="width:100%">
-     <h1>John Doe</h1>
-     <p class="title1">@email.com</p>
-     <p>User/Admin</p>
-     <p><a href="https://google.com" class="link1 hoverable" style="color:#272727">Change Password</a></p>
+     <h1>{user.fullName}</h1>
+     <p class="title1">{user.email}</p>
+     <p>{user.phoneNumber}</p>
+     <p>{user.location}</p>
+     <!-- <p><a href="https://google.com" class="link1 hoverable" style="color:#272727">Change Password</a></p> -->
      <p>
        <Link to="/Cart" class="button1" style="text-decoration:none; color: #C5C5C5">View Cart</Link>
      </p>
@@ -73,3 +93,7 @@
    <Route path="/Cart" component={Cart} />
  </Router>
 </body>
+
+{:else}
+  <p>Loading user information...</p>
+{/if}

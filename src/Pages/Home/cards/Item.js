@@ -1,9 +1,10 @@
 export default class Item {
-    constructor(name, description, price, type) {
+    constructor(name, description, price, type, image) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.type = type;
+        this.image = image;
     }
 }
 

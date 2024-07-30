@@ -145,12 +145,15 @@
     }
     .clickable-div:hover {
       text-decoration: none; /* Prevent underline on hover */
+      transform: scale(1.01); /* Grow a bit on hover */
     }
     .clickable-div div {
       text-decoration: none; /* Prevent underline inside the card content */
+      transition: transform 0.2s;
     }
     .clickable-div div:hover {
       text-decoration: none; /* Prevent underline on hover inside the card content */
+      transform: scale(1.01); /* Grow a bit on hover */
     }
   </style>
 

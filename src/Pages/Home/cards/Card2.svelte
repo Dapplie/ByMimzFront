@@ -6,7 +6,7 @@
 <div class="relative flex w-64 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
     <div class="relative mx-4 mt-4 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
       <img
-        src="./assets/0F0A1098copy.jpg"
+        src={item.image}
         class="h-full w-full object-cover"
       />
     </div>

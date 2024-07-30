@@ -6,6 +6,7 @@
     let description = '';
     let price = '';
     let itemType = '';
+    let image = '';
   
     const addItem = async () => {
       try {
@@ -13,7 +14,8 @@
           name: itemName,
           description: description,
           price: price,
-          type: itemType
+          type: itemType,
+          image: image
         };
   
         const response = await axios.post('http://localhost:3030/api/items', newItem);
@@ -23,6 +25,7 @@
           description = '';
           price = '';
           itemType = '';
+          image = '';
           alert('Item added successfully');
         }
       } catch (error) {
@@ -64,13 +67,21 @@
         </div>
         <div>
           <select
-            class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8"
+            class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"
             bind:value={itemType}
           >
             <option value="" disabled selected>Select Type</option>
             <option value="hat">hat</option>
             <option value="bag">bag</option>
           </select>
+        </div>
+        <div>
+          <input
+            type="text"
+            class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8"
+            placeholder="Image"
+            bind:value={image}
+          />
         </div>
   
         <div class="flex justify-center my-6">
