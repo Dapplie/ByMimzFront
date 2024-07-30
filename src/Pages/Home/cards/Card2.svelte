@@ -1,5 +1,21 @@
 <script>
     export let item;
+
+    import axios from 'axios';
+
+  const addToCart = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post('http://localhost:3030/api/cart', 
+        { itemId: item.id, quantity: 1 },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Item added to cart');
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+      alert('Failed to add item to cart');
+    }
+  };
   </script>
 
 <div class='Card2item'>
@@ -26,6 +42,7 @@
     <div class="p-6 pt-0">
       <div class="flex justify-between gap-2"> <!-- Added flex container -->
         <button
+          on:click={addToCart}
           class="block select-none rounded-lg bg-neutral-200 py-2 px-2 text-center align-middle font-sans text-[0.65rem] text-nowrap font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
         >

@@ -1,28 +1,27 @@
+// src/stores/cartStore.js
 import { writable } from 'svelte/store';
-import axios from 'axios';
 
 export const cart = writable([]);
 
-export async function fetchCart(userId) {
-    try {
-        const response = await axios.get(`http://localhost:3030/api/cart/${userId}`);
-        cart.set(response.data.items);
-    } catch (error) {
-        console.error('Error fetching cart:', error);
-    }
-}
+// Fetch cart data from server
+export async function fetchCart() {
+  try {
+    const response = await fetch('http://localhost:3030/api/cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}` // Adjust if using a different auth mechanism
+      }
+    });
 
-export async function addToCart(userId, productId, name, price, quantity = 1) {
-    try {
-        const response = await axios.post('http://localhost:3030/api/cart', {
-            userId,
-            productId,
-            name,
-            price,
-            quantity
-        });
-        fetchCart(userId); // Refresh cart after adding an item
-    } catch (error) {
-        console.error('Error adding to cart:', error);
-    }
+    if (!response.ok) throw new Error('Failed to fetch cart');
+
+    const data = await response.json(); // Ensure data is correctly defined
+    console.log('Fetched cart data:', data); // Debugging line
+
+    // Assuming data.items is the array of cart items
+    cart.set(data.items);
+  } catch (err) {
+    console.error('Error fetching cart:', err); // Error handling
+  }
 }
