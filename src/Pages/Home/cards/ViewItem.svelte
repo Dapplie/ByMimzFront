@@ -4,21 +4,36 @@
   
     let itemId;
     let item;
+// Extract itemId from URL path
+const path = window.location.pathname;
+  itemId = path.split('/').pop();
   
-    // Extract itemId from URL path
-    const path = window.location.pathname;
-    itemId = path.split('/').pop();
-  
-    onMount(async () => {
-      if (itemId) {
-        try {
-          const response = await axios.get(`http://localhost:3030/api/items/${itemId}`);
-          item = response.data;
-        } catch (error) {
-          console.error('Error fetching item:', error);
-        }
+  onMount(async () => {
+    if (itemId) {
+      try {
+        const response = await axios.get(`http://localhost:3030/api/items/${itemId}`);
+        item = response.data;
+      } catch (error) {
+        console.error('Error fetching item:', error);
       }
-    });
+    }
+  });
+  
+  const addToCart = async (event) => {
+    event.preventDefault(); // Prevent default button behavior
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post(
+        'http://localhost:3030/api/cart',
+        { itemId: item._id, quantity: 1 },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Item added to cart');
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+      alert('Failed to add item to cart');
+    }
+  };
   </script>
   
   <main>
@@ -51,7 +66,9 @@
         </div>
         <div class="flex space-x-4 mb-6 text-sm font-medium">
           <div class="flex-auto flex space-x-4">
-            <button class="h-10 px-6 font-semibold rounded-md border border-balck-800 text-gray-900" type="button">
+            <button 
+            on:click={addToCart}
+            class="h-10 px-6 font-semibold rounded-md border border-balck-800 text-gray-900" type="button">
               Add to cart
             </button>
           </div>
