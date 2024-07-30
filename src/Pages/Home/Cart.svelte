@@ -34,6 +34,31 @@
     return unsubscribe;
   });
 
+
+  async function removeItem(itemId) {
+    console.log(`Attempting to remove item with ID: ${itemId}`);
+    try {
+      const response = await fetch('http://localhost:3030/api/cart', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Adjust if using a different auth mechanism
+        },
+        body: JSON.stringify({ itemId })
+      });
+
+      const result = await response.json();
+      console.log('Server response:', result);
+
+      if (!response.ok) throw new Error('Failed to remove item');
+
+      // Fetch the updated cart after removing the item
+      fetchCart();
+    } catch (err) {
+      console.error('Error removing item:', err); // Error handling
+    }
+  }
+
    </script>
 
     {#if cartItems.length > 0}
@@ -83,7 +108,7 @@
                                </td>
                                <td class="p-2">
                                    <div class="flex justify-center">
-                                       <button>
+                                       <button on:click={() => removeItem(item.itemId._id)}>
                                            <svg class="h-8 w-8 rounded-full p-1 hover:bg-gray-100 hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                            </svg>
