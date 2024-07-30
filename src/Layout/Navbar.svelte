@@ -14,14 +14,18 @@
   import Hats from "../Pages/Home/cards/Hats.svelte";
   import { onMount } from 'svelte';
   import axios from 'axios';
-  import { isAuthenticated, logout } from '../Pages/Home/auth';
+  import { isAuthenticated,isAdminAuthenticated, logout } from '../Pages/Home/auth';
   import AddProduct from "../Pages/AddProduct.svelte";
   import ViewItem from "../Pages/Home/cards/ViewItem.svelte";
+  import AdminSignIn from "../Pages/Home/AdminSignIn.svelte";
   
 
 
   let loggedIn = false;
-
+let adminLoggedIn =false;
+$: isAdminAuthenticated.subscribe(value => {
+  adminLoggedIn = value;
+})
 $: isAuthenticated.subscribe(value => {
   loggedIn = value;
 });
@@ -30,6 +34,7 @@ const handleLogout = () => {
   logout();
   goto('/'); // Redirect after logout
 };
+
 </script>
 
 <main>
@@ -111,7 +116,16 @@ const handleLogout = () => {
         <Link class="active" to="/">
           <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
         </Link>
+        {#if adminLoggedIn}
+        <Link to="/" on:click={handleLogout}>Logout</Link>
+
         <Link to="/Dashboard">Dashboard</Link>
+
+        {:else}
+        <Link to="/AdminSignIn">Admin Login</Link>
+
+        {/if}
+
         <Link to="/Favorite">View Favorites</Link>
         <Link to="/Cart">View Cart</Link>
         <Link to="/AccountView">View Account</Link>
@@ -163,6 +177,7 @@ const handleLogout = () => {
         <Link to="/SignIn">Sign in</Link>
       </nav> -->
       <Route path="/" component={Home} />
+      <Route path="AdminSignIn" component={AdminSignIn} />
       <Route path="SignUp" component={SignUp} />
       <Route path="SignIn" component={SignIn} />
       <Route path="AccountView" component={AccountView} />
