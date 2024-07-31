@@ -62,7 +62,7 @@ const path = window.location.pathname;
 <div class="flex min-h-screen items-center justify-center bg-gray-100">
     <div class="flex font-sans">
       <div class="flex-none w-48 relative">
-        <img src={item.image} alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <img src={`http://localhost:3030/${item.image}`} alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
       </div>
       <form class="flex-auto p-6">
         <div class="flex flex-wrap">

@@ -6,33 +6,63 @@
     let description = '';
     let price = '';
     let itemType = '';
-    let image = '';
+    let imageFile = null;
   
+    // const addItem = async () => {
+    //   try {
+    //     const newItem = {
+    //       name: itemName,
+    //       description: description,
+    //       price: price,
+    //       type: itemType,
+    //       image: image
+    //     };
+  
+    //     const response = await axios.post('http://localhost:3030/api/items', newItem);
+    //     if (response.status === 201) {
+    //       // Handle success (e.g., clear the form, show a success message)
+    //       itemName = '';
+    //       description = '';
+    //       price = '';
+    //       itemType = '';
+    //       image = '';
+    //       alert('Item added successfully');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error adding item:', error);
+    //     alert('Failed to add item');
+    //   }
+    // };
+
     const addItem = async () => {
-      try {
-        const newItem = {
-          name: itemName,
-          description: description,
-          price: price,
-          type: itemType,
-          image: image
-        };
+    try {
+      const formData = new FormData();
+      formData.append('name', itemName);
+      formData.append('description', description);
+      formData.append('price', price);
+      formData.append('type', itemType);
+      formData.append('image', imageFile); // Add file to form data
   
-        const response = await axios.post('http://localhost:3030/api/items', newItem);
-        if (response.status === 201) {
-          // Handle success (e.g., clear the form, show a success message)
-          itemName = '';
-          description = '';
-          price = '';
-          itemType = '';
-          image = '';
-          alert('Item added successfully');
+      const response = await axios.post('http://localhost:3030/api/items', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-      } catch (error) {
-        console.error('Error adding item:', error);
-        alert('Failed to add item');
+      });
+      
+      if (response.status === 201) {
+        // Handle success
+        itemName = '';
+        description = '';
+        price = '';
+        itemType = '';
+        imageFile = null;
+        alert('Item added successfully');
       }
-    };
+    } catch (error) {
+      console.error('Error adding item:', error);
+      alert('Failed to add item');
+    }
+  };
   </script>
   
   <div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center">
@@ -77,10 +107,10 @@
         </div>
         <div>
           <input
-            type="text"
-            class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8"
-            placeholder="Image"
-            bind:value={image}
+          type="file"
+          class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8"
+          on:change={e => imageFile = e.target.files[0]}
+            
           />
         </div>
   
