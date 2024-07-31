@@ -18,6 +18,7 @@
   import AddProduct from "../Pages/AddProduct.svelte";
   import ViewItem from "../Pages/Home/cards/ViewItem.svelte";
   import AdminSignIn from "../Pages/Home/AdminSignIn.svelte";
+  import ViewOrders from "../Pages/ViewOrders.svelte";
   
 
 
@@ -178,6 +179,7 @@ const handleLogout = () => {
       </nav> -->
       <Route path="/" component={Home} />
       <Route path="AdminSignIn" component={AdminSignIn} />
+      <Route path="ViewOrders" component={ViewOrders} />
       <Route path="SignUp" component={SignUp} />
       <Route path="SignIn" component={SignIn} />
       <Route path="AccountView" component={AccountView} />

@@ -4,6 +4,7 @@
     import axios from 'axios';
     import { Router, Link, Route } from "svelte-routing";
     import AddProduct from "./AddProduct.svelte";
+    import ViewOrders from "./ViewOrders.svelte";
 
     let searchQuery = "";
     let items = [];
@@ -85,9 +86,12 @@
 
 <router>
 <Route path="AddProduct" component={AddProduct} />
+<Route path="ViewOrders" component={ViewOrders} />
+
+
 <div class="container mb-16">
     <h1 class="mb-2">
-        Manage all items online or <Link to="/AddProduct">Add new item</Link>
+        Manage all items below, <Link to="/AddProduct">Add new item</Link>, or <Link to="/ViewOrders"> View orders</Link> 
     </h1>
 
     <!-- Search bar -->

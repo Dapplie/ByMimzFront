@@ -39,6 +39,7 @@
       <img
         src={item.image}
         class="h-full w-full object-cover"
+        alt=''
       />
     </div>
     <div class="p-6">
