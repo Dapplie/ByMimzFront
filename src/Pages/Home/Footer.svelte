@@ -19,10 +19,13 @@
 <div class=" col-sm-4 col-md col-sm-4  col-12 col">
 <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
 <!--headin5_amrc-->
-<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-<p><i class="fa fa-location-arrow"></i> Beirut, Lebanon Street ## </p>
-<p><i class="fa fa-phone"></i>  +91-9999888866  </p>
-<p><i class="fa fa fa-envelope"></i> 61830337@email.email.com  </p>
+<p class="mb10">𝓑𝔂 𝓜𝓲𝓶𝔃 <br>
+  Shopping & retail <br>
+  Made with uniqueness  <br>
+  Lebanon | Bahrain | Muscat | Dubai</p>
+<p><i class="fa fa-location-arrow"></i> Lebanon, Bahrain, Muscat, Dubai</p>
+<p><i class="fa fa-phone"></i>  +00-0000000000  </p>
+<p><i class="fa fa fa-envelope"></i> NoMailYet@email.com  </p>
 
 
 </div>
@@ -32,12 +35,12 @@
 <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
-  <li><a href="">Test2</a></li>
-  <li><a href="">Test2 Test2 Test2 Test2 Test2</a></li>
-  <li><a href="">Test2 Test2 Test2</a></li>
-  <li><a href="">Test2</a></li>
-  <li><a href="">Test2 Test2 Test2</a></li>
-  <li><a href="">Test2 Test2</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
@@ -47,12 +50,12 @@
 <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
 <!--headin5_amrc-->
 <ul class="footer_ul_amrc">
-<li><a href="">Test2 Test2</a></li>
-<li><a href="">Test2 Test2 Test2</a></li>
-<li><a href="">Test2 Test2</a></li>
-<li><a href="">Test2</a></li>
-<li><a href="">Test2 Test2 Test2</a></li>
-<li><a href="">Test2 Test2</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
+  <li><a href="">To be added later</a></li>
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
@@ -63,7 +66,7 @@
 <!--headin5_amrc ends here-->
 
 <ul class="footer_ul2_amrc">
-<li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li>
+<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram fleft padding-right"></i> </a><p>Follow us on instagram: <a href="https://www.instagram.com/by_mimz/?hl=en/">https://www.instagram.com/by_mimz/?hl=en/</a></p></li>
 <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li>
 <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li>
 </ul>
@@ -86,10 +89,10 @@
 <p class="text-center">Copyright @2024 | Designed by <a routerLink="/home">ByMimz & co.</a></p>
 
 <ul class="social_footer_ul">
-<li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+<!-- <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
 <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-<li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
-<li><a href="https://instagram.com/"><i class="fab fa-instagram"></i></a></li>
+<li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li> 
+<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram"></i></a></li>-->
 </ul>
 <!--social_footer_ul ends here-->
 </div>

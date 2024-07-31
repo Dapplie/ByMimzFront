@@ -3,7 +3,6 @@
   import Home from "../Pages/Home/Home.svelte";
   import SignUp from "../Pages/Home/SignUp.svelte";
   import SignIn from "../Pages/Home/SignIn.svelte";
-  import { fix_position } from "svelte/internal";
   let imglogo = "./assets/bymimswht.png";
   import Footer from "../Pages/Home/Footer.svelte";
   import AccountView from "../Pages/Home/AccountView.svelte";
@@ -13,42 +12,56 @@
   import Bags from "../Pages/Home/cards/Bags.svelte";
   import Hats from "../Pages/Home/cards/Hats.svelte";
   import { onMount } from 'svelte';
-  import axios from 'axios';
-  import { isAuthenticated,isAdminAuthenticated, logout } from '../Pages/Home/auth';
+  import { isAuthenticated, isAdminAuthenticated, logout } from '../Pages/Home/auth';
   import AddProduct from "../Pages/AddProduct.svelte";
   import ViewItem from "../Pages/Home/cards/ViewItem.svelte";
   import AdminSignIn from "../Pages/Home/AdminSignIn.svelte";
   import ViewOrders from "../Pages/ViewOrders.svelte";
-  
+  import { onDestroy } from 'svelte';
+  import { get } from 'svelte/store';
 
   let showAdminButton = false;
 
   onMount(() => {
-      showAdminButton = get(isAdminAuthenticated);
+    showAdminButton = get(isAdminAuthenticated);
   });
-
 
   let loggedIn = false;
 
-$: isAuthenticated.subscribe(value => {
-  loggedIn = value;
-});
+  $: isAuthenticated.subscribe(value => {
+    loggedIn = value;
+  });
 
-const handleLogout = () => {
-  logout();
-  goto('/'); // Redirect after logout
-};
+  const handleLogout = () => {
+    logout();
+    goto('/'); // Redirect after logout
+  };
 
+  let isMenuOpen = false;
+
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+  }
+
+  function handleClickOutside(event) {
+    const topnav = document.getElementById("myTopnav");
+    if (topnav && !topnav.contains(event.target)) {
+      isMenuOpen = false;
+    }
+  }
+
+  onMount(() => {
+    document.addEventListener('click', handleClickOutside);
+  });
+
+  onDestroy(() => {
+    document.removeEventListener('click', handleClickOutside);
+  });
 </script>
 
 <main>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
     <style>
       body {
         margin: 0;
@@ -57,27 +70,25 @@ const handleLogout = () => {
         height: auto;
       }
 
+      .topnav a.link{
+        padding: 17px;
+      }
       .topnav {
         overflow: hidden;
-        background-color: #333;
-        /* margin-bottom: 1rem; */
+        background-color: rgba(51, 51, 51, 0.9);
       }
 
       .topnav a {
         float: left;
-        display: none; /* Hide all links by default */
+        display: block;
         color: #f2f2f2;
         text-align: center;
-        padding: 0.25rem 0.5rem;
+        padding: 0.75rem 1rem;
         text-decoration: none;
         font-size: 14px;
       }
 
       .topnav a.active {
-        display: block; /* Always show the active (Home) link */
-      }
-
-      .active {
         background-color: #a80cad;
         color: white;
       }
@@ -85,99 +96,70 @@ const handleLogout = () => {
       .topnav a:hover {
         background-color: #555;
         color: white;
-      }
-
-      .topnav.responsive a {
-        display: block; /* Show links when in responsive mode */
-        float: none;
-        text-align: left;
+        text-decoration: none;
+        /* transform: scale(1.05); */
       }
 
       .topnav .icon {
-        float: right;
-        display: block; /* Show the hamburger icon */
+        display: none;
+      }
+      .topnav .icon:hover {
+        background-color: rgba(144, 144, 144, 0.5);
       }
 
-      .topnav.responsive .icon:hover {
-        background-color: transparent !important;
+      @media screen and (max-width: 768px) {
+        .topnav a:not(:first-child) {
+          display: none;
+        }
+        .topnav a.icon {
+          float: right;
+          display: block;
+        }
       }
-      .topnav.responsive .icon {
+
+      .topnav.responsive {
+        position: relative;
+      }
+
+      .topnav.responsive a.icon {
         position: absolute;
-        top: 0;
         right: 0;
-        /* display: none; */
-        /* Hide the hamburger icon when in responsive mode */
+        top: 0;
       }
 
-      .topnav div a {
-        position: absolute;
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
       }
     </style>
   </head>
   <body>
     <Router>
-      <div class="topnav" id="myTopnav">
+      <div class="topnav" id="myTopnav" class:responsive={isMenuOpen}>
         <Link class="active" to="/">
-          <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
+          <img alt="ByMims" class="m-0 p-0" width="45" src={imglogo} />
         </Link>
         {#if $isAdminAuthenticated}
-
-        <Link to="/Dashboard">Dashboard</Link>
-
-       
-
+        <Link to="/Dashboard" class="link">Dashboard</Link>
         {/if}
         {#if loggedIn}
-        <Link to="/Favorite">View Favorites</Link>
-        <Link to="/Cart">View Cart</Link>
-        <Link to="/AccountView">View Account</Link>
+        <Link to="/Favorite" class="link">View Favorites</Link>
+        <Link to="/Cart" class="link">View Cart</Link>
+        <Link to="/AccountView" class="link">View Account</Link>
         
-        <Link to="/" on:click={handleLogout}>Logout</Link>
+        <Link to="/" on:click={handleLogout} class="link">Logout</Link>
         {:else}
-        <Link to="/SignIn">Login</Link>
-        <Link to="/SignUp">Sign up</Link>
+        <Link to="/SignIn" class="link">Login</Link>
+        <Link to="/SignUp" class="link">Sign up</Link>
         {/if}
         <a
           href="javascript:void(0);"
-          style="font-size:15px;"
+          style="font-size:21px;"
           class="icon"
-          onclick="toggleMenu()">&#9776;</a
-        >
+          on:click={toggleMenu}>&#9776;</a>
       </div>
 
-      <script>
-        function toggleMenu() {
-          var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-            document.addEventListener("click", closeMenuOnClickOutside);
-          } else {
-            x.className = "topnav";
-            document.removeEventListener("click", closeMenuOnClickOutside);
-          }
-        }
-
-        function closeMenuOnClickOutside(event) {
-          var x = document.getElementById("myTopnav");
-          if (!x.contains(event.target)) {
-            x.className = "topnav";
-            document.removeEventListener("click", closeMenuOnClickOutside);
-          }
-        }
-
-        // Prevent toggleMenu function from closing the menu when clicking inside the menu
-        document
-          .querySelector(".icon")
-          .addEventListener("click", function (event) {
-            event.stopPropagation();
-          });
-      </script>
-
-      <!-- <nav>
-        <Link to="/">Home</Link>
-        <Link to="/SignUp">Sign up</Link>
-        <Link to="/SignIn">Sign in</Link>
-      </nav> -->
       <Route path="/" component={Home} />
       <Route path="AdminSignIn" component={AdminSignIn} />
       <Route path="ViewOrders" component={ViewOrders} />
