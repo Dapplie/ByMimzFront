@@ -127,11 +127,11 @@ const handleLogout = () => {
        
 
         {/if}
-
+        {#if loggedIn}
         <Link to="/Favorite">View Favorites</Link>
         <Link to="/Cart">View Cart</Link>
         <Link to="/AccountView">View Account</Link>
-        {#if loggedIn}
+        
         <Link to="/" on:click={handleLogout}>Logout</Link>
         {:else}
         <Link to="/SignIn">Login</Link>
