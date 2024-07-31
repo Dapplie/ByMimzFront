@@ -16,6 +16,21 @@
       alert('Failed to add item to cart');
     }
   };
+
+
+  const addToFavorite = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post('http://localhost:3030/api/favorite', 
+        { itemId: item.id, quantity: 1 },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Item added to favorite');
+    } catch (error) {
+      console.error('Error adding item to favorite:', error);
+      alert('Failed to add item to favorite');
+    }
+  };
   </script>
 
 <div class='Card2item'>
@@ -49,6 +64,7 @@
           Add&nbsp;to Cart
         </button>
         <button
+        on:click={addToFavorite}
           class="block select-none rounded-lg bg-neutral-200 py-2 px-2 text-center align-middle font-sans text-[0.65rem] text-nowrap font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
         >

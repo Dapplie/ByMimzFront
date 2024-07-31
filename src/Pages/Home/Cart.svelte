@@ -59,6 +59,29 @@
     }
   }
 
+
+  async function checkout() {
+    try {
+      const response = await fetch('http://localhost:3030/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      const result = await response.json();
+      console.log('Checkout response:', result);
+
+      if (!response.ok) throw new Error('Checkout failed');
+
+      // Fetch the updated cart after checkout
+      fetchCart();
+    } catch (err) {
+      console.error('Error during checkout:', err); // Error handling
+    }
+  }
+
    </script>
 
     {#if cartItems.length > 0}
@@ -72,7 +95,7 @@
                </header>
    
                <div class="overflow-x-auto p-3">
-                   <table class="w-full table-auto">
+                   <table class="w-full table-auto mb-2">
                        <thead class="bg-gray-50 text-xs font-semibold uppercase text-gray-400">
                            <tr>
                                <th></th>
@@ -120,6 +143,12 @@
                        </tbody>
                        {/each}
                    </table>
+                   <button
+                         on:click={checkout}
+                        class="middle none center w-full rounded-lg bg-purple-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        data-ripple-light="true">
+                        Checkout
+                    </button>
                </div>
    
                <!-- total amount -->

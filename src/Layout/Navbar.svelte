@@ -117,7 +117,7 @@ const handleLogout = () => {
           <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
         </Link>
         {#if adminLoggedIn}
-        <Link to="/" on:click={handleLogout}>Logout</Link>
+        <Link to="/" on:click={handleLogout}>Admin Logout</Link>
 
         <Link to="/Dashboard">Dashboard</Link>
 

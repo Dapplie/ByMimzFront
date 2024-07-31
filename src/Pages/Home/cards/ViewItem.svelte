@@ -34,6 +34,23 @@ const path = window.location.pathname;
       alert('Failed to add item to cart');
     }
   };
+
+
+  const addToFavorite = async (event) => {
+    event.preventDefault(); // Prevent default button behavior
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post(
+        'http://localhost:3030/api/favorite',
+        { itemId: item._id, quantity: 1 },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Item added to favorite');
+    } catch (error) {
+      console.error('Error adding item to favorite:', error);
+      alert('Failed to add item to favorie');
+    }
+  };
   </script>
   
   <main>
@@ -72,7 +89,9 @@ const path = window.location.pathname;
               Add to cart
             </button>
           </div>
-          <button class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Favorites">
+          <button 
+          on:click={addToFavorite}
+          class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Favorites">
             <svg width="20" height="20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
             </svg>
