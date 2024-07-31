@@ -21,12 +21,15 @@
   import ViewOrders from "../Pages/ViewOrders.svelte";
   
 
+  let showAdminButton = false;
+
+  onMount(() => {
+      showAdminButton = get(isAdminAuthenticated);
+  });
+
 
   let loggedIn = false;
-let adminLoggedIn =false;
-$: isAdminAuthenticated.subscribe(value => {
-  adminLoggedIn = value;
-})
+
 $: isAuthenticated.subscribe(value => {
   loggedIn = value;
 });
@@ -117,13 +120,11 @@ const handleLogout = () => {
         <Link class="active" to="/">
           <img alt="ByMims" class="m-0 p-0" width="35" src={imglogo} />
         </Link>
-        {#if adminLoggedIn}
-        <Link to="/" on:click={handleLogout}>Admin Logout</Link>
+        {#if $isAdminAuthenticated}
 
         <Link to="/Dashboard">Dashboard</Link>
 
-        {:else}
-        <Link to="/AdminSignIn">Admin Login</Link>
+       
 
         {/if}
 

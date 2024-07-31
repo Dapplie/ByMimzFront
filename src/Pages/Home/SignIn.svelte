@@ -13,24 +13,41 @@
     let email = '';
     let password = '';
 
-    const signIn = async () => {
-    try {
-        const response = await axios.post('http://localhost:3030/api/signin', {
-            email,
-            password
-        });
-        console.log('Sign-in successful:', response.data);
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('userId', response.data.userId);
-        //localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
-        checkAuth();
-        await checkAuth();
-        window.location.href = '/'; // Redirect after successful sign-in
+//     const signIn = async () => {
+//     try {
+//         const response = await axios.post('http://localhost:3030/api/signin', {
+//             email,
+//             password
+//         });
+//         console.log('Sign-in successful:', response.data);
+//         localStorage.setItem('token', response.data.token);
+//         localStorage.setItem('userId', response.data.userId);
+//         //localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info
+//         checkAuth();
+//         await checkAuth();
+//         window.location.href = '/'; // Redirect after successful sign-in
         
-    } catch (error) {
-        console.error('Error during sign-in:', error);
-    }
-};
+//     } catch (error) {
+//         console.error('Error during sign-in:', error);
+//     }
+// };
+
+const signIn = async () => {
+      try {
+          const response = await axios.post('http://localhost:3030/api/signin', {
+              email,
+              password
+          });
+          console.log('Sign-in successful:', response.data);
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('userId', response.data.userId);
+          localStorage.setItem('userType', response.data.type); // Store user type
+          await checkAuth();
+          window.location.href = '/'; // Redirect after successful sign-in
+      } catch (error) {
+          console.error('Error during sign-in:', error);
+      }
+  };
 
 </script>
 <style>
