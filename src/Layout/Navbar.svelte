@@ -71,7 +71,7 @@
       }
 
       .topnav a.link{
-        padding: 17px;
+        padding: 14px;
       }
       .topnav {
         overflow: hidden;
@@ -83,7 +83,7 @@
         display: block;
         color: #f2f2f2;
         text-align: center;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 1rem;
         text-decoration: none;
         font-size: 14px;
       }
