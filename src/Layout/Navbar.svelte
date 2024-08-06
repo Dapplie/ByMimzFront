@@ -19,8 +19,10 @@
   import ViewOrders from "../Pages/ViewOrders.svelte";
   import { onDestroy } from 'svelte';
   import { get } from 'svelte/store';
+  import Items from "../Pages/Home/cards/Items.svelte";
 
   let showAdminButton = false;
+  let svgPath = "./assets/cartSVG.svg";
 
   onMount(() => {
     showAdminButton = get(isAdminAuthenticated);
@@ -141,15 +143,21 @@
           <img alt="ByMims" class="m-0 p-0" width="45" src={imglogo} />
         </Link>
         {#if $isAdminAuthenticated}
-        <Link to="/Dashboard" class="link">Dashboard</Link>
+        <Link to="/Dashboard" class="link">Admin Dashboard</Link>
         {/if}
         {#if loggedIn}
+        <Link to="/Items" class="link">Shop Categories</Link>
         <Link to="/Favorite" class="link">View Favorites</Link>
-        <Link to="/Cart" class="link">View Cart</Link>
+       
         <Link to="/AccountView" class="link">View Account</Link>
         
         <Link to="/" on:click={handleLogout} class="link">Logout</Link>
+
+        <Link to="/Cart" class="link">
+          <img src={svgPath} alt="View Cart" width="21" />
+        </Link>
         {:else}
+        <Link to="/Bags" class="link">Shop Categories</Link>
         <Link to="/SignIn" class="link">Login</Link>
         <Link to="/SignUp" class="link">Sign up</Link>
         {/if}
@@ -173,6 +181,7 @@
       <Route path="Hats" component={Hats} />
       <Route path="AddProduct" component={AddProduct} />
       <Route path="/view-item/:id" component={ViewItem} />
+      <Route path="Items" component={Items} />
     </Router>
   </body>
 </main>
