@@ -131,6 +131,7 @@
       }
 
       .topnav.responsive a {
+        float: none !important;
         float: none;
         display: block;
         text-align: left;
@@ -154,7 +155,7 @@
         
         <Link to="/" on:click={handleLogout} class="link">Logout</Link>
 
-        <Link to="/Cart" class="link">
+        <Link to="/Cart" class="link" style='float: right;'>
           <img src={svgPath} alt="View Cart" width="21" />
         </Link>
         {:else}

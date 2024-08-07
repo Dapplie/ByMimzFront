@@ -38,7 +38,7 @@
   <main>
     <div>
       <!-- Search and Type Filter -->
-      <div class="mx-auto w-[85svw] my-5 md:w-[75vw]">
+      <div class="mx-auto w-[85svw] my-5 md:w-[75vw] flex flex-row" Style="gap:1rem;">
         <input
           id="searchbar"
           bind:value={searchQuery}
@@ -49,7 +49,7 @@
         />
         <select
           bind:value={selectedType}
-          class="border-1 w-full border-black rounded-xl p-2 mt-2"
+          class="border-1 w-full border-black rounded-xl p-2 "  
         >
           <option value="">View all items</option>
           {#each itemTypes as type}
@@ -90,5 +90,13 @@
   }
   select {
     padding-inline: .5rem;
+    width: 30%;
+    margin-top: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    select{
+      width: 80% !important;
+    }
   }
 </style>
