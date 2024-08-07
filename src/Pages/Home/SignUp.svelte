@@ -2,6 +2,8 @@
     import { onMount } from 'svelte';
     import { goto } from '@sveltejs/kit/navigation';
     import axios from 'axios';
+    import SignIn from './SignIn.svelte';
+    import { Router, Link, Route } from 'svelte-routing';
     
     let fullName = '';
     let email = '';
@@ -39,8 +41,10 @@ const signUp = async () => {
 </script>
 
 
+<router>
+<Route path="SignIn" component={SignIn} />
 
-
+<h2 class='mt-4 text-center'>Already have an account? <Link to="/SignIn" class="link">Login here!</Link></h2>
 
 <div class="flex items-center justify-center p-12">
     <!-- Author: FormBold Team -->
@@ -142,3 +146,4 @@ const signUp = async () => {
       </form>
     </div>
   </div>
+</router>

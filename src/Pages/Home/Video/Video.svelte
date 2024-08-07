@@ -124,7 +124,7 @@
       rightHalf.addEventListener('click', showNextSlide);
       leftHalf.addEventListener('click', showPrevSlide);
 
-      interval = setInterval(showNextSlide, 5500);
+      interval = setInterval(showNextSlide, 3000);
 
       window.addEventListener('resize', updateSlidePosition);
       updateSlidePosition();

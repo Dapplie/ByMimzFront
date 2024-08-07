@@ -21,11 +21,11 @@
 <!--headin5_amrc-->
 <p class="mb10">𝓑𝔂 𝓜𝓲𝓶𝔃 <br>
   Shopping & retail <br>
-  Made with uniqueness  <br>
-  Lebanon | Bahrain | Muscat | Dubai</p>
-<p><i class="fa fa-location-arrow"></i> Lebanon, Bahrain, Muscat, Dubai</p>
-<p><i class="fa fa-phone"></i>  +00-0000000000  </p>
-<p><i class="fa fa fa-envelope"></i> NoMailYet@email.com  </p>
+  Made with uniqueness  
+ </p>
+<p><i class="fa fa-location-arrow"></i> Lebanon | Bahrain | Muscat | Dubai</p>
+<!-- <p><i class="fa fa-phone"></i>  +00-0000000000  </p>
+<p><i class="fa fa fa-envelope"></i> NoMailYet@email.com  </p> -->
 
 
 </div>
@@ -38,9 +38,8 @@
   <li><a href="">To be added later</a></li>
   <li><a href="">To be added later</a></li>
   <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
+
+
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
@@ -53,9 +52,8 @@
   <li><a href="">To be added later</a></li>
   <li><a href="">To be added later</a></li>
   <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
+
+
 </ul>
 <!--footer_ul_amrc ends here-->
 </div>
@@ -67,8 +65,8 @@
 
 <ul class="footer_ul2_amrc">
 <li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram fleft padding-right"></i> </a><p>Follow us on instagram: <a href="https://www.instagram.com/by_mimz/?hl=en/">https://www.instagram.com/by_mimz/?hl=en/</a></p></li>
-<li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li>
-<li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li>
+<!-- <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li> -->
+<!-- <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li> -->
 </ul>
 <!--footer_ul2_amrc ends here-->
 </div>

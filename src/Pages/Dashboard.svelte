@@ -5,6 +5,7 @@
     import { Router, Link, Route } from "svelte-routing";
     import AddProduct from "./AddProduct.svelte";
     import ViewOrders from "./ViewOrders.svelte";
+    import AddType from "./AddType.svelte";
 
     let searchQuery = "";
     let items = [];
@@ -103,10 +104,11 @@
 <router>
     <Route path="AddProduct" component={AddProduct} />
     <Route path="ViewOrders" component={ViewOrders} />
+    <Route path="AddType" component={AddType} />
 
     <div class="container mb-16">
         <h1 class="mb-2">
-            Manage all items below, <Link to="/AddProduct">Add new item</Link>, or <Link to="/ViewOrders"> View orders</Link>
+            Manage all items below, <Link to="/AddProduct">Add new item</Link>, <Link to="/AddType">Add new type</Link>, or <Link to="/ViewOrders"> View orders</Link>
         </h1>
 
         <!-- Search bar -->

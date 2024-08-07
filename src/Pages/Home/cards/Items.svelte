@@ -1,146 +1,94 @@
 <script>
-     import { Router, Link, Route } from "svelte-routing";
-     import Bags from "./Bags.svelte";
-     import Hats from "./Hats.svelte";
+  import Card2 from "./Card2.svelte";
+  import { onMount } from 'svelte';
+  import axios from 'axios';
+  import { Router, Link, Route } from "svelte-routing";
+  import ViewItem from "./ViewItem.svelte";
+
+  let searchQuery = "";
+  let selectedType = ""; // Store the selected item type
+  let items = [];
+  let itemTypes = []; // Store the item types fetched from the backend
+
+  onMount(async () => {
+    try {
+      // Fetch items
+      const itemsResponse = await axios.get('http://localhost:3030/api/items');
+      items = itemsResponse.data.map((item) => ({ ...item, id: item._id }));
+      console.log('Fetched items:', items);
+
+      // Fetch item types
+      const typesResponse = await axios.get('http://localhost:3030/api/item-types');
+      itemTypes = typesResponse.data;
+      console.log('Fetched item types:', itemTypes);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  });
+
+  // Reactive filtered items based on type and search query
+  $: filteredItems = items
+    .filter(item => !selectedType || item.type.name === selectedType) // Filter by selected type
+    .filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    item.description.toLowerCase().includes(searchQuery.toLowerCase()));
 </script>
 
-
-
-
-
-
 <Router>
-    <Route path="Bags" component={Bags} />
-    <Route path="Hats" component={Hats} />
-
-
-
-<div class="card-container">
-    <Link to="/Bags" class="clickable-div">
-      <div
-        class="relative flex max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
-      >
-        <div
-          class="relative m-1 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none"
+  <Route path="/view-item/:id" component={ViewItem} />
+  <main>
+    <div>
+      <!-- Search and Type Filter -->
+      <div class="mx-auto w-[85svw] my-5 md:w-[75vw]">
+        <input
+          id="searchbar"
+          bind:value={searchQuery}
+          type="text"
+          name="search"
+          placeholder="Search items.."
+          class="border-1 w-full border-black rounded-xl p-2"
+        />
+        <select
+          bind:value={selectedType}
+          class="border-1 w-full border-black rounded-xl p-2 mt-2"
         >
-          <img src="./assets/fashion.jpg" alt="ui/ux review check" />
-        </div>
-        <div class="p-6">
-          <h4
-            class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
-          >
-            BAGS
-          </h4>
-          <p
-            class="mt-3 block font-sans text-xl font-normal leading-relaxed text-gray-700 antialiased"
-          >
-            Because it's about motivating the doers. Because I'm here to follow
-            my dreams and inspire others.
-          </p>
-        </div>
-        <div class="flex items-center justify-between p-6">
-          <div class="flex items-center -space-x-3">
-            <img
-              alt="natali craig"
-              src="/assets/bag1.jpg"
-              class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-            />
-            <img
-              alt="tania andrew"
-              src="/assets/bag2.jpg"
-              class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-            />
-          </div>
-          <p
-            class="block font-sans text-base font-normal leading-relaxed text-inherit antialiased"
-          >
-            100+ items
-          </p>
-        </div>
+          <option value="">View all items</option>
+          {#each itemTypes as type}
+            <option value={type.name}>{type.name}</option>
+          {/each}
+        </select>
       </div>
-    </Link>
 
-    <Link to="/Hats" class="clickable-div">
-      <div
-        class="relative flex max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
-      >
-        <div
-          class="relative m-1 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none"
-        >
-          <img src="./assets/fashion.jpg" alt="ui/ux review check" />
-        </div>
-        <div class="p-6">
-          <h4
-            class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
-          >
-            HATS
-          </h4>
-          <p
-            class="mt-3 block font-sans text-xl font-normal leading-relaxed text-gray-700 antialiased"
-          >
-            Because it's about motivating the doers. Because I'm here to follow
-            my dreams and inspire others.
-          </p>
-        </div>
-        <div class="flex items-center justify-between p-6">
-          <div class="flex items-center -space-x-3">
-            <img
-              alt="natali craig"
-              src="/assets/bag1.jpg"
-              class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-            />
-            <img
-              alt="tania andrew"
-              src="/assets/bag2.jpg"
-              class="relative inline-block h-9 w-9 rounded-full border-2 border-white object-cover object-center hover:z-10"
-            />
-          </div>
-          <p
-            class="block font-sans text-base font-normal leading-relaxed text-inherit antialiased"
-          >
-            100+ items
-          </p>
-        </div>
+      <div class="flex flex-row flex-wrap gap-5 justify-center items-center">
+        {#each filteredItems as item}
+        <Link to={`/view-item/${item.id}`} style="cursor: pointer; text-decoration: none;" class="clickable-div">
+          <Card2 {item} />
+        </Link>
+        {/each}
       </div>
-    </Link>
-  </div>
-
-  <style>
-    .card-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      width: 100%; /* Full width to ensure centering */
-      margin: 0 auto; /* Center container in the viewport */
-      padding: 2rem 0; /* Add some padding to center vertically */
-    }
-    .clickable-div {
-      text-decoration: none;
-      max-width: 384px;
-      margin: 0;
-      padding: 0;
-      display: inline-block; /* Ensure links do not occupy full width */
-    }
-    .clickable-div:hover {
-      text-decoration: none; /* Prevent underline on hover */
-      transform: scale(1.01); /* Grow a bit on hover */
-    }
-    .clickable-div div {
-      text-decoration: none; /* Prevent underline inside the card content */
-      transition: transform 0.2s;
-    }
-    .clickable-div div:hover {
-      text-decoration: none; /* Prevent underline on hover inside the card content */
-      transform: scale(1.01); /* Grow a bit on hover */
-    }
-  </style>
-
-  <!-- stylesheet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
-  />
-
+    </div>
+    <style>
+      .clickable-div:hover {
+        text-decoration: none; /* Prevent underline on hover */
+        transform: scale(1.01); /* Grow a bit on hover */
+      }
+      .clickable-div div {
+        text-decoration: none; /* Prevent underline inside the card content */
+        transition: transform 0.2s;
+      }
+      .clickable-div div:hover {
+        text-decoration: none; /* Prevent underline on hover inside the card content */
+        transform: scale(1.01); /* Grow a bit on hover */
+      }
+    </style>
+  </main>
 </Router>
+
+<style>
+  input { padding-inline: .5rem; }
+  input::placeholder {
+    padding-inline: .5rem;
+  }
+  select {
+    padding-inline: .5rem;
+  }
+</style>

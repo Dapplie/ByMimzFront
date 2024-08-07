@@ -20,6 +20,7 @@
   import { onDestroy } from 'svelte';
   import { get } from 'svelte/store';
   import Items from "../Pages/Home/cards/Items.svelte";
+  import AddType from "../Pages/AddType.svelte";
 
   let showAdminButton = false;
   let svgPath = "./assets/cartSVG.svg";
@@ -157,7 +158,7 @@
           <img src={svgPath} alt="View Cart" width="21" />
         </Link>
         {:else}
-        <Link to="/Bags" class="link">Shop Categories</Link>
+        <Link to="/Items" class="link">Shop Categories</Link>
         <Link to="/SignIn" class="link">Login</Link>
         <Link to="/SignUp" class="link">Sign up</Link>
         {/if}
@@ -182,6 +183,7 @@
       <Route path="AddProduct" component={AddProduct} />
       <Route path="/view-item/:id" component={ViewItem} />
       <Route path="Items" component={Items} />
+      <Route path="AddType" component={AddType} />
     </Router>
   </body>
 </main>
