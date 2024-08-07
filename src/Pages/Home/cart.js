@@ -6,7 +6,7 @@ export const cart = writable([]);
 // Fetch cart data from server
 export async function fetchCart() {
   try {
-    const response = await fetch('https://bymimzback.onrender.com/api/cart', {
+    const response = await fetch('http://localhost:3030/api/cart', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

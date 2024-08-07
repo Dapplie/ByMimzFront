@@ -15,7 +15,7 @@
 
 const signUp = async () => {
     try {
-        const response = await axios.post('https://bymimzback.onrender.com/api/signup', {
+        const response = await axios.post('http://localhost:3030/api/signup', {
             fullName,
             email,
             location,

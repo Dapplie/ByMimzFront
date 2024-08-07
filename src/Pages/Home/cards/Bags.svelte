@@ -11,7 +11,7 @@
 
   onMount(async () => {
     try {
-      const response = await axios.get('https://bymimzback.onrender.com/api/items');
+      const response = await axios.get('http://localhost:3030/api/items');
       // Assuming the type field is an object and needs to be transformed or looked up
       items = response.data.map((item) => ({ ...item, id: item._id }));
       console.log('Fetched items:', items);

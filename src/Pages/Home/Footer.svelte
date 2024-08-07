@@ -16,57 +16,20 @@
 <footer class="footer">
 <div class="container bottom_border">
 <div class="row">
-<div class=" col-sm-4 col-md col-sm-4  col-12 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
-<!--headin5_amrc-->
-<p class="mb10">𝓑𝔂 𝓜𝓲𝓶𝔃 <br>
-  Shopping & retail <br>
-  Made with uniqueness  
- </p>
-<p><i class="fa fa-location-arrow"></i> Lebanon | Bahrain | Muscat | Dubai</p>
-<!-- <p><i class="fa fa-phone"></i>  +00-0000000000  </p>
-<p><i class="fa fa fa-envelope"></i> NoMailYet@email.com  </p> -->
 
 
-</div>
 
 
-<div class=" col-sm-4 col-md  col-6 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
-<!--headin5_amrc-->
-<ul class="footer_ul_amrc">
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
 
 
-</ul>
-<!--footer_ul_amrc ends here-->
-</div>
 
-
-<div class=" col-sm-4 col-md  col-6 col">
-<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
-<!--headin5_amrc-->
-<ul class="footer_ul_amrc">
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-  <li><a href="">To be added later</a></li>
-
-
-</ul>
-<!--footer_ul_amrc ends here-->
-</div>
-
-
-<div class=" col-sm-4 col-md  col-12 col">
+<div class=" col-sm-4 col-md  col-12 col" >
 <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
 <!--headin5_amrc ends here-->
 
 <ul class="footer_ul2_amrc">
-<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram fleft padding-right"></i> </a><p>Follow us on instagram: <a href="https://www.instagram.com/by_mimz/?hl=en/">https://www.instagram.com/by_mimz/?hl=en/</a></p></li>
-<!-- <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li> -->
-<!-- <li><a href="https://twitter.com/"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="https://twitter.com/">https://www.twitter.com/</a></p></li> -->
+<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram fleft padding-right"></i> </a><p>Follow us on instagram!</p></li>
+
 </ul>
 <!--footer_ul2_amrc ends here-->
 </div>
@@ -76,22 +39,12 @@
 
 <div class="container">
     <ul class="foote_bottom_ul_amrc">
-        <!-- <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/home">About</a></li>
-        <li><a routerLink="/home">Services</a></li>
-        <li><a routerLink="/home">Pricing</a></li>
-        <li><a routerLink="/home">Blog</a></li>
-        <li><a routerLink="/home">Contact</a></li> -->
+
         </ul>
 <!--foote_bottom_ul_amrc ends here-->
 <p class="text-center">Copyright @2024 | Designed by <a routerLink="/home">ByMimz & co.</a></p>
 
-<ul class="social_footer_ul">
-<!-- <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-<li><a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a></li> 
-<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram"></i></a></li>-->
-</ul>
+
 <!--social_footer_ul ends here-->
 </div>
 
@@ -109,15 +62,15 @@
   
 <style>
     /*footer*/
-.col_white_amrc { color:#000000;}
-footer { width:100%; background-color:#f0f0f0; min-height:250px; padding:10px 0px 25px 0px ;}
+.col_white_amrc { color:#ffffff;}
+footer { width:100%; background-color:#000000; min-height:250px; padding:10px 0px 25px 0px ;}
 .pt2 { padding-top:40px ; margin-bottom:20px ;}
-footer p { font-size:13px; color:#000000; padding-bottom:0px; margin-bottom:8px;}
+footer p { font-size:13px; color:#ffffff; padding-bottom:0px; margin-bottom:8px;}
 .mb10 { padding-bottom:15px ;}
 .footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
 .footer_ul_amrc li {padding:0px 0px 5px 0px;}
-.footer_ul_amrc li a{ color:#000000;}
-.footer_ul_amrc li a:hover{ color:#707070; text-decoration:none;}
+.footer_ul_amrc li a{ color:#fff9f9;}
+.footer_ul_amrc li a:hover{ color:#252525; text-decoration:none;}
 .fleft { float:left;}
 .padding-right { padding-right:10px; }
 

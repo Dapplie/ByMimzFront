@@ -9,7 +9,7 @@
 
   onMount(async () => {
     try {
-      const response = await axios.get('https://bymimzback.onrender.com/api/user', {
+      const response = await axios.get('http://localhost:3030/api/user', {
         headers: { Authorization: `Bearer ${token}` } // Pass token in headers
       });
       user = response.data;

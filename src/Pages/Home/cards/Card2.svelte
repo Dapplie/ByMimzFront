@@ -22,7 +22,7 @@
   const addToCart = async () => {
       const token = localStorage.getItem('token');
       try {
-          await axios.post('https://bymimzback.onrender.com/api/cart', 
+          await axios.post('http://localhost:3030/api/cart', 
               { itemId: item.id, quantity: 1 },
               { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -36,7 +36,7 @@
   const addToFavorite = async () => {
       const token = localStorage.getItem('token');
       try {
-          await axios.post('https://bymimzback.onrender.com/api/favorite', 
+          await axios.post('http://localhost:3030/api/favorite', 
               { itemId: item.id, quantity: 1 },
               { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -56,7 +56,7 @@
   <div class="relative flex w-64 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
       <div class="relative mx-4 mt-4 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
           <img
-              src={`https://bymimzback.onrender.com/${item.image}`}
+              src={`http://localhost:3030/${item.image}`}
               class="h-full w-full object-cover"
               alt=''
           />

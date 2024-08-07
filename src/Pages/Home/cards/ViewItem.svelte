@@ -25,7 +25,7 @@
   onMount(async () => {
       if (itemId) {
           try {
-              const response = await axios.get(`https://bymimzback.onrender.com/api/items/${itemId}`);
+              const response = await axios.get(`http://localhost:3030/api/items/${itemId}`);
               item = response.data;
           } catch (error) {
               console.error('Error fetching item:', error);
@@ -38,7 +38,7 @@
       const token = localStorage.getItem('token');
       try {
           await axios.post(
-              'https://bymimzback.onrender.com/api/cart',
+              'http://localhost:3030/api/cart',
               { itemId: item._id, quantity: 1 },
               { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -54,7 +54,7 @@
       const token = localStorage.getItem('token');
       try {
           await axios.post(
-              'https://bymimzback.onrender.com/api/favorite',
+              'http://localhost:3030/api/favorite',
               { itemId: item._id, quantity: 1 },
               { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -75,7 +75,7 @@
   <div class="flex min-h-screen items-center justify-center bg-gray-100">
       <div class="flex font-sans">
           <div class="flex-none w-48 relative">
-              <img src={`https://bymimzback.onrender.com/${item.image}`} alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <img src={`http://localhost:3030/${item.image}`} alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
           </div>
           <form class="flex-auto p-6">
               <div class="flex flex-wrap">

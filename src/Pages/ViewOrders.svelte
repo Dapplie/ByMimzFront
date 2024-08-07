@@ -6,7 +6,7 @@
   
     async function fetchOrders() {
       try {
-        const response = await fetch('https://bymimzback.onrender.com/api/orders', {
+        const response = await fetch('http://localhost:3030/api/orders', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -26,7 +26,7 @@
   
     async function deleteOrder(orderId) {
       try {
-        const response = await fetch(`https://bymimzback.onrender.com/api/orders/${orderId}`, {
+        const response = await fetch(`http://localhost:3030/api/orders/${orderId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

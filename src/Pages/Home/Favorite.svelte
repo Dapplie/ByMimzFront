@@ -38,7 +38,7 @@
   async function removeItem(itemId) {
     console.log(`Attempting to remove item with ID: ${itemId}`);
     try {
-      const response = await fetch('https://bymimzback.onrender.com/api/favorite', {
+      const response = await fetch('http://localhost:3030/api/favorite', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

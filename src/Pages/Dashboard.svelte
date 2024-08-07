@@ -15,7 +15,7 @@
 
     const fetchItems = async () => {
         try {
-            const response = await fetch('https://bymimzback.onrender.com/api/items');
+            const response = await fetch('http://localhost:3030/api/items');
             if (!response.ok) throw new Error('Network response was not ok.');
             items = await response.json();
             filteredItems = items; // Initialize filtered items
@@ -26,7 +26,7 @@
 
     const deleteItem = async (id) => {
         try {
-            const response = await axios.delete(`https://bymimzback.onrender.com/api/items/${id}`);
+            const response = await axios.delete(`http://localhost:3030/api/items/${id}`);
             if (response.status === 200) {
                 items = items.filter(item => item._id !== id);
                 filteredItems = filteredItems.filter(item => item._id !== id); // Update filtered items
@@ -46,7 +46,7 @@
 
     const updateItemPrice = async (id) => {
         try {
-            const response = await axios.put(`https://bymimzback.onrender.com/api/items/${id}`, {
+            const response = await axios.put(`http://localhost:3030/api/items/${id}`, {
                 price: newPrice[id],
                 onSale: true // Include this field to trigger the backend logic
             });

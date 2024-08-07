@@ -78,7 +78,7 @@
       }
       .topnav {
         overflow: hidden;
-        background-color: rgba(51, 51, 51, 0.9);
+        background-color: #000000;
       }
 
       .topnav a {
@@ -92,7 +92,7 @@
       }
 
       .topnav a.active {
-        background-color: #a80cad;
+        background-color: #000000;
         color: white;
       }
 
@@ -107,7 +107,7 @@
         display: none;
       }
       .topnav .icon:hover {
-        background-color: rgba(144, 144, 144, 0.5);
+        background-color: #000000;
       }
 
       @media screen and (max-width: 768px) {
