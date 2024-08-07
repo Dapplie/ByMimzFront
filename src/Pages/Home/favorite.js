@@ -6,7 +6,7 @@ export const favorite = writable([]);
 // Fetch favorite data from server
 export async function fetchFavorite() {
   try {
-    const response = await fetch('http://localhost:3030/api/favorite', {
+    const response = await fetch('https://bymimzback.onrender.com/api/favorite', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

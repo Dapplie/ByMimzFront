@@ -38,7 +38,7 @@
   async function removeItem(itemId) {
     console.log(`Attempting to remove item with ID: ${itemId}`);
     try {
-      const response = await fetch('http://localhost:3030/api/cart', {
+      const response = await fetch('https://bymimzback.onrender.com/api/cart', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@
 
   async function checkout() {
     try {
-      const response = await fetch('http://localhost:3030/api/checkout', {
+      const response = await fetch('https://bymimzback.onrender.com/api/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
