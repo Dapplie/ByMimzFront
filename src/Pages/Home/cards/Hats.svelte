@@ -13,12 +13,12 @@
   onMount(async () => {
     try {
       // Fetch items
-      const itemsResponse = await axios.get('http://localhost:3030/api/items');
+      const itemsResponse = await axios.get('https://bymimzback.onrender.com/api/items');
       items = itemsResponse.data.map((item) => ({ ...item, id: item._id }));
       console.log('Fetched items:', items);
 
       // Fetch item types
-      const typesResponse = await axios.get('http://localhost:3030/api/item-types');
+      const typesResponse = await axios.get('https://bymimzback.onrender.com/api/item-types');
       itemTypes = typesResponse.data;
       console.log('Fetched item types:', itemTypes);
     } catch (error) {

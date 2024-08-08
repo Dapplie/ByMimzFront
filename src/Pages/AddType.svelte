@@ -12,7 +12,7 @@
       }
       
       try {
-        await axios.post('http://localhost:3030/api/item-types', { name: newType });
+        await axios.post('https://bymimzback.onrender.com/api/item-types', { name: newType });
         message = "Item type added successfully!";
         newType = ""; // Clear input field
         errorMessage = ""; // Clear previous errors

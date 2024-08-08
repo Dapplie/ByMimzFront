@@ -17,7 +17,7 @@
     async function addToCart(itemId) {
   console.log(`Attempting to add item with ID: ${itemId}`);
   try {
-    const response = await fetch('http://localhost:3030/api/cart', {
+    const response = await fetch('https://bymimzback.onrender.com/api/cart', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@
     async function removeItem(itemId) {
       console.log(`Attempting to remove item with ID: ${itemId}`);
       try {
-        const response = await fetch('http://localhost:3030/api/favorite', {
+        const response = await fetch('https://bymimzback.onrender.com/api/favorite', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@
                     <div class="relative mx-4 mt-4 h-64 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
                         {#if item.item.image}
                         <img
-                            src={`http://localhost:3030/${item.item.image}`}
+                            src={`https://bymimzback.onrender.com/${item.item.image}`}
                             class="h-full w-full object-cover"
                             alt=''
                         />

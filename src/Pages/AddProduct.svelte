@@ -11,7 +11,7 @@
   
   onMount(async () => {
     try {
-      const response = await axios.get('http://localhost:3030/api/item-types');
+      const response = await axios.get('https://bymimzback.onrender.com/api/item-types');
       itemTypes = response.data;
     } catch (error) {
       console.error('Error fetching item types:', error);
@@ -27,7 +27,7 @@
       formData.append('type', itemType);
       formData.append('image', imageFile); // Add file to form data
 
-      const response = await axios.post('http://localhost:3030/api/items', formData, {
+      const response = await axios.post('https://bymimzback.onrender.com/api/items', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

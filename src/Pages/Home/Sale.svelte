@@ -10,7 +10,7 @@
   
     onMount(async () => {
       try {
-        const response = await axios.get('http://localhost:3030/api/items');
+        const response = await axios.get('https://bymimzback.onrender.com/api/items');
         items = response.data.map((item, index) => ({ ...item, id: item._id || index }));
   
         // Filter and sort onSale items
