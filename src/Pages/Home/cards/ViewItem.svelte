@@ -66,6 +66,13 @@
   };
 </script>
 
+<style>
+    .old-price {
+  color: red; /* Set the text color to red */
+  text-decoration: line-through; /* Apply strikethrough effect */
+  margin-right: 8px; /* Space between old and new prices */
+}
+</style>
 <Router>
   <Route path="SignUp" component={SignUp} />
 </Router>
@@ -83,7 +90,12 @@
                       {item.name}
                   </h1>
                   <div class="text-lg font-semibold text-black-500">
-                      ${item.price}
+                      <!-- Show old price with strikethrough if it exists -->
+                      {#if item.oldPrice}
+                        <span class="old-price">${item.oldPrice.toFixed(2)}</span>
+                      {/if}
+                      <!-- Always show the current price -->
+                      <span class="current-price">${item.price.toFixed(2)}</span>
                   </div>
                   <div class="w-full flex-none text-sm font-medium text-black-700 mt-2">
                       {item.description}

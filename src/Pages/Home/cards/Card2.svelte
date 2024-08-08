@@ -47,6 +47,13 @@
       }
   };
 </script>
+<style>
+    .old-price {
+  color: red; /* Set the text color to red */
+  text-decoration: line-through; /* Apply strikethrough effect */
+  margin-right: 8px; /* Space between old and new prices */
+}
+</style>
 
 <Router>
   <Route path="SignUp" component={SignUp} />
@@ -60,6 +67,14 @@
               class="h-full w-full object-cover"
               alt=''
           />
+          {#if item.onSale}
+          {#if item.salePercent != null}
+          <div class="absolute top-0 right-0 text-red-600 py-1 rounded text-xl transform rotate-12 font-bold text-center">
+            On<br>Sale {item.salePercent}% <!-- Display discount percentage -->
+          </div>
+          {/if}
+        {/if}
+
       </div>
       <div class="p-6">
           <div class="mb-2 flex items-center justify-between">
@@ -67,7 +82,14 @@
                   {item.name}
               </p>
               <p class="block font-sans text-base font-medium leading-relaxed text-blue-gray-900 antialiased">
-                  ${item.price}
+                {#if item.oldPrice != null && item.oldPrice > item.price}
+                
+                  <span class="old-price">${item.oldPrice.toFixed(2)}</span>
+                  <span class="new-price">${item.price.toFixed(2)}</span>
+                
+              {:else}
+                ${item.price.toFixed(2)}
+              {/if}
               </p>
           </div>
           <p class="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">

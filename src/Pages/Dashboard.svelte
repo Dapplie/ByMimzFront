@@ -46,9 +46,11 @@
 
     const updateItemPrice = async (id) => {
         try {
+            const currentItem = items.find(item => item._id === id);
             const response = await axios.put(`http://localhost:3030/api/items/${id}`, {
                 price: newPrice[id],
-                onSale: true // Include this field to trigger the backend logic
+                // Only set onSale to true if the new price is lower than the current price
+                onSale: newPrice[id] < currentItem.price
             });
             if (response.status === 200) {
                 const updatedItem = response.data;
@@ -139,12 +141,17 @@
                         <td class="p-4 w-1/4">{item.description}</td>
                         <td class="p-4 w-1/4">
                             {#if editPrice[item._id]}
-                                <input type="number" bind:value={newPrice[item._id]} />
+                            <input type="number" bind:value={newPrice[item._id]} />
+                        {:else}
+                            {#if item.oldPrice}
+                                <span class="line-through text-red-600">${item.oldPrice}</span>
+                                <span class="ml-2">${item.price}</span>
                             {:else}
                                 ${item.price}
                             {/if}
+                        {/if}
                         </td>
-                        <td class="p-4 w-1/4">{item.type}</td>
+                        <td class="p-4 w-1/4">{item.type.name}</td>
                         <td class="p-4 w-1/4">
                             {#if editPrice[item._id]}
                                 <button class="bg-green-800 text-white rounded-xl px-4 py-2"

@@ -28,8 +28,8 @@
   </script>
   
   <div class="container mx-auto">
-  <h1 class="text-red-600 text-center my-4">
-    𝓢𝓪𝓵𝓮
+  <h1 class="text-red-600 text-center my-4" style="font-family: 'Impact'">
+    On Sale
   </h1>
   </div>
 

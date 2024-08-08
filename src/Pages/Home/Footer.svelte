@@ -14,27 +14,21 @@
 
 <!--footer starts from here-->
 <footer class="footer">
-<div class="container bottom_border">
-<div class="row">
-
-
-
-
-
-
-
-<div class=" col-sm-4 col-md  col-12 col" >
-<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
-<!--headin5_amrc ends here-->
-
-<ul class="footer_ul2_amrc">
-<li><a href="https://www.instagram.com/by_mimz/?hl=en/"><i class="fab fa-instagram fleft padding-right"></i> </a><p>Follow us on instagram!</p></li>
-
-</ul>
-<!--footer_ul2_amrc ends here-->
-</div>
-</div>
-</div>
+    <div class="container bottom_border">
+        <div class="row justify-content-center">
+            <div class="col-auto text-center">
+                <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+                <ul class="footer_ul2_amrc list-unstyled">
+                    <li>
+                        <a href="https://www.instagram.com/by_mimz/?hl=en" class="d-inline-flex align-items-center">
+                            <i class="fab fa-instagram fleft padding-right"></i>
+                            <p class="mb-0">Follow us on Instagram!</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
 <div class="container">
