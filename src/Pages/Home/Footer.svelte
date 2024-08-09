@@ -1,91 +1,34 @@
-<head>
-    <title></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
-
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-<!--footer starts from here-->
-<footer class="footer">
-    <div class="container bottom_border">
-        <div class="row justify-content-center">
-            <div class="col-auto text-center">
-                <h5 class="headin5_amrc col_white_amrc pt2" Style="font-family: 'Impact'">Follow us</h5>
-                <ul class="footer_ul2_amrc list-unstyled">
-                    <li>
-                        <a href="https://www.instagram.com/by_mimz/?hl=en" class="d-inline-flex align-items-center">
-                            <i class="fab fa-instagram fleft padding-right"></i>
-                            <p class="mb-0">Follow us on Instagram!</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<footer class="bg-black text-white py-10">
+    <div class="container mx-auto text-center">
+      <h5 class="text-2xl mb-4" style="font-family: 'Impact', sans-serif;">Follow us</h5>
+      <a href="https://www.instagram.com/by_mimz/?hl=en" class="inline-flex items-center space-x-2 text-white linkss">
+        <i class="fab fa-instagram text-xl"></i>
+        <p class="mb-0 text-sm text-white">Follow us on Instagram!</p>
+      </a>
     </div>
-
-
-<div class="container">
-    <ul class="foote_bottom_ul_amrc">
-
-        </ul>
-<!--foote_bottom_ul_amrc ends here-->
-<p class="text-center">Copyright @2024 | Designed by <a routerLink="/home">ByMimz & co.</a></p>
-
-
-<!--social_footer_ul ends here-->
-</div>
-
-
-
-
-
-</footer>
-
   
-      
+    <!-- White line above the copyright section -->
+    <div class="relative">
+      <div class="absolute inset-x-0 top-0">
+        <div class="border-t border-white mx-auto w-3/4 opacity-70 mt-4 mb-4"></div>
+      </div>
+    </div>
   
+    <div class="container mx-auto mt-6 text-center">
+      <p class="text-sm text-white text-opacity-80 mt-0 mb-4">
+        Copyright &copy; 2024 | Designed by ByMimz & co.
+      </p>
+    </div>
+  </footer>
+
 <style>
-    /*footer*/
-.col_white_amrc { color:#ffffff;}
-footer { width:100%; background-color:#000000; min-height:250px; padding:10px 0px 25px 0px ;}
-.pt2 { padding-top:40px ; margin-bottom:20px ;}
-footer p { font-size:13px; color:#ffffff; padding-bottom:0px; margin-bottom:8px;}
-.mb10 { padding-bottom:15px ;}
-.footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
-.footer_ul_amrc li {padding:0px 0px 5px 0px;}
-.footer_ul_amrc li a{ color:#fff9f9;}
-.footer_ul_amrc li a:hover{ color:#252525; text-decoration:none;}
-.fleft { float:left;}
-.padding-right { padding-right:10px; }
+  .linkss {
+    text-decoration: none !important; /* Remove default text decoration */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+  }
 
-.footer_ul2_amrc {margin:0px; list-style-type:none; padding:0px;}
-.footer_ul2_amrc li p { display:table; }
-.footer_ul2_amrc li a:hover { text-decoration:none;}
-.footer_ul2_amrc li i { margin-top:5px;}
-
-.bottom_border { border-bottom:1px solid #323b3f; padding-bottom:20px;}
-.foote_bottom_ul_amrc {
-	list-style-type:none;
-	padding:0px;
-	display:table;
-	margin-top: 10px;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-left: auto;
-}
-.foote_bottom_ul_amrc li { display:inline;}
-.foote_bottom_ul_amrc li a { color:#000000; margin:0 12px;}
-
-.social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
-.social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
-.social_footer_ul li a { color:#000000; border:1px solid #000000; padding:8px;border-radius:50%;}
-.social_footer_ul li i {  width:20px; height:20px; text-align:center;}
-
-
+  .linkss:hover {
+    text-decoration: none !important; /* Ensure no text decoration on hover */
+    transform: scale(1.05); /* Slightly enlarge the text on hover */
+  }
 </style>
