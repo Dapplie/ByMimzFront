@@ -1,67 +1,40 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Slider</title>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
+<script>
+  import Swiper from 'swiper/bundle'; // Use the bundle version
+  import 'swiper/css/bundle';
 
+  let swiper;
 
-</head>
-<body>
-  <style>
-    swiper-container {
-      width: 100%;
-      height: 100%;
-    }
+  import { onMount } from 'svelte';
 
-    swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  onMount(() => {
+    swiper = new Swiper('.mySwiper', {
+      loop: true,
+      speed: 1000,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
 
-    swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    swiper-container {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-
-  <swiper-container class="swiper mySwiper" 
-  loop="true" speed="1000" autoplay="true">
-    <swiper-slide><img src="./assets/fashion.jpg" alt="" /></swiper-slide>
-    <swiper-slide><img src="./assets/fashion2.jpg" alt="" /></swiper-slide>
-    <swiper-slide><img src="./assets/fashion3.jpg" alt="" /></swiper-slide>
-  </swiper-container>
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
-  ></script>
-
-
-    <!-- Initialize Swiper after DOM is loaded -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const swiper = new Swiper(".mySwiper", {
-          loop: true,
-          speed: 1000,
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-          },
-        });
-      });
-    </script>
-  
-</body>
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="./assets/fashion.jpg" alt="" /></div>
+    <div class="swiper-slide"><img src="./assets/fashion2.jpg" alt="" /></div>
+    <div class="swiper-slide"><img src="./assets/fashion3.jpg" alt="" /></div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
