@@ -49,5 +49,19 @@
     src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
   ></script>
 
+
+    <!-- Initialize Swiper after DOM is loaded -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".mySwiper", {
+          loop: true,
+          speed: 1000,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+        });
+      });
+    </script>
   
 </body>
