@@ -10,12 +10,12 @@
     <!-- White line above the copyright section -->
     <div class="relative">
       <div class="absolute inset-x-0 top-0">
-        <div class="border-t border-white mx-auto w-3/4 opacity-70 mt-4 mb-4"></div>
+        <div class="border-t border-white mx-auto w-3/4 opacity-30 mt-4 mb-4"></div>
       </div>
     </div>
   
     <div class="container mx-auto mt-6 text-center">
-      <p class="text-sm text-white text-opacity-80 mt-0 mb-4">
+      <p class="text-sm text-white text-opacity-80 mt-8 mb-4">
         Copyright &copy; 2024 | Designed by ByMimz & co.
       </p>
     </div>
