@@ -2,7 +2,7 @@
     <div class="container mx-auto text-center">
       <h5 class="text-2xl mb-4" style="font-family: 'Impact', sans-serif;">Follow us</h5>
       <a href="https://www.instagram.com/by_mimz/?hl=en" class="inline-flex items-center space-x-2 text-white linkss">
-        <i class="fab fa-instagram text-xl"></i>
+
         <p class="mb-0 text-sm text-white">Follow us on Instagram!</p>
       </a>
     </div>
@@ -10,7 +10,7 @@
     <!-- White line above the copyright section -->
     <div class="relative">
       <div class="absolute inset-x-0 top-0">
-        <div class="border-t border-white mx-auto w-3/4 opacity-30 mt-4 mb-4"></div>
+        <div class="border-t border-white mx-auto w-4/5 opacity-30 mt-4 mb-4"></div>
       </div>
     </div>
   

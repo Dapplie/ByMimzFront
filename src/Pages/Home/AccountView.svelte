@@ -74,9 +74,9 @@
  </style>
 </head>
 
-<body>
+<body class="mb-6">
  <Router>
-   <h2 style="text-align:center; font-family:'Impact'" class='mt-2'>User Profile</h2>s
+   <h2 style="text-align:center; font-family:'Impact'" class='my-4 text-2xl'>User Profile</h2>
 
    <div class="card1">
      <img src="./assets/profile.webp" alt="John" style="width:100%">

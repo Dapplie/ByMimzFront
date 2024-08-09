@@ -82,7 +82,7 @@
       }));
     });
     </script>
-   <div class="flex items-center justify-center w-full mt-4">
+   <div class="flex items-center justify-center w-full mt-4 text-3xl">
 <h1 style="font-family: 'Impact'">Manage Favorites</h1>
 </div> 
     <Router>
